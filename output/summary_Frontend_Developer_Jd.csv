@@ -1,0 +1,41 @@
+Rank,Candidate,Similarity_Score,File,Job_Description,Skills,Skill_Count
+1,Laiba Khan Frontend Developer 8,23.56663378242559,Laiba_Khan_Frontend_Developer_8.pdf,Frontend Developer Jd,"react, git, css, go, typescript",5
+2,Kashif Siddiqui Frontend Developer 3,23.121627264165678,Kashif_Siddiqui_Frontend_Developer_3.pdf,Frontend Developer Jd,"java, javascript, react, machine learning, git",9
+3,Kashif Qureshi Frontend Developer 5,20.348393577663312,Kashif_Qureshi_Frontend_Developer_5.pdf,Frontend Developer Jd,"react, git, html, css, typescript",5
+4,Nida Awan Frontend Developer 7,19.03659028507393,Nida_Awan_Frontend_Developer_7.pdf,Frontend Developer Jd,"java, javascript, react, machine learning, css",6
+5,Anum Awan Frontend Developer 4,18.397969264382333,Anum_Awan_Frontend_Developer_4.pdf,Frontend Developer Jd,"java, javascript, react, css, typescript",6
+6,Farah Siddiqui Frontend Developer 6,18.10368197236374,Farah_Siddiqui_Frontend_Developer_6.pdf,Frontend Developer Jd,"java, javascript, react, machine learning, git",8
+7,Faisal Qureshi Frontend Developer 1,15.415986881134536,Faisal_Qureshi_Frontend_Developer_1.pdf,Frontend Developer Jd,"java, javascript, react, git, html",8
+8,Imran Butt Frontend Developer 2,14.85118615981284,Imran_Butt_Frontend_Developer_2.pdf,Frontend Developer Jd,"java, javascript, react, aws, html",8
+9,Laiba Butt Uiux Designer 5,6.492744810825263,Laiba_Butt_UIUX_Designer_5.pdf,Frontend Developer Jd,,0
+10,Iqra Raza Mern Developer 4,5.8750228290469,Iqra_Raza_MERN_Developer_4.pdf,Frontend Developer Jd,"java, javascript, react, node, mongodb",11
+11,Waqas Butt Mern Developer 5,5.664779658994849,Waqas_Butt_MERN_Developer_5.pdf,Frontend Developer Jd,"java, javascript, react, mongodb, html",8
+12,Danish Iqbal Uiux Designer 7,5.392077592192844,Danish_Iqbal_UIUX_Designer_7.pdf,Frontend Developer Jd,,0
+13,Mariam Javed Mern Developer 2,5.380644449845482,Mariam_Javed_MERN_Developer_2.pdf,Frontend Developer Jd,"java, javascript, react, node, mongodb",11
+14,Salman Qureshi Mern Developer 8,5.132571331852417,Salman_Qureshi_MERN_Developer_8.pdf,Frontend Developer Jd,"java, javascript, react, node, machine learning",11
+15,Waqas Abbasi Uiux Designer 8,4.965648974139758,Waqas_Abbasi_UIUX_Designer_8.pdf,Frontend Developer Jd,machine learning,1
+16,Ayesha Khan Mern Developer 3,4.7694788507180546,Ayesha_Khan_MERN_Developer_3.pdf,Frontend Developer Jd,"java, javascript, node, git, css",8
+17,Hira Raza Uiux Designer 3,4.720431620339017,Hira_Raza_UIUX_Designer_3.pdf,Frontend Developer Jd,machine learning,1
+18,Sana Khan Backend Developer 2,4.483670991247815,Sana_Khan_Backend_Developer_2.pdf,Frontend Developer Jd,"flask, sql, mongodb, redis, docker",8
+19,Usman Khan Mern Developer 1,4.434145686519572,Usman_Khan_MERN_Developer_1.pdf,Frontend Developer Jd,"react, node, mongodb, git, html",7
+20,Fatima Siddiqui Uiux Designer 2,4.316516213777401,Fatima_Siddiqui_UIUX_Designer_2.pdf,Frontend Developer Jd,,0
+21,Kashif Raza Uiux Designer 4,4.266264963181312,Kashif_Raza_UIUX_Designer_4.pdf,Frontend Developer Jd,aws,1
+22,Shahid Farooq Backend Developer 7,4.169154847217106,Shahid_Farooq_Backend_Developer_7.pdf,Frontend Developer Jd,"django, flask, sql, postgresql, mongodb",11
+23,Ali Abbasi Mern Developer 7,4.150356532968402,Ali_Abbasi_MERN_Developer_7.pdf,Frontend Developer Jd,"java, javascript, node, mongodb, git",9
+24,Adeel Abbasi Backend Developer 3,3.770690204615481,Adeel_Abbasi_Backend_Developer_3.pdf,Frontend Developer Jd,"python, node, django, flask, sql",13
+25,Laiba Hussain Mern Developer 6,3.5548726374571737,Laiba_Hussain_MERN_Developer_6.pdf,Frontend Developer Jd,"java, javascript, react, node, machine learning",10
+26,Mahnoor Khan Backend Developer 1,3.5244291091911792,Mahnoor_Khan_Backend_Developer_1.pdf,Frontend Developer Jd,"python, django, flask, sql, redis",8
+27,Imran Raza Backend Developer 8,3.471773018426579,Imran_Raza_Backend_Developer_8.pdf,Frontend Developer Jd,"python, node, django, sql, postgresql",10
+28,Rabia Farooq Backend Developer 4,2.944337647344176,Rabia_Farooq_Backend_Developer_4.pdf,Frontend Developer Jd,"python, django, flask, sql, mongodb",8
+29,Junaid Sheikh Backend Developer 6,2.688859005797608,Junaid_Sheikh_Backend_Developer_6.pdf,Frontend Developer Jd,"python, django, sql, postgresql, redis",10
+30,Komal Raza Uiux Designer 6,2.485413779402968,Komal_Raza_UIUX_Designer_6.pdf,Frontend Developer Jd,,0
+31,Faisal Javed Uiux Designer 1,2.363899771457821,Faisal_Javed_UIUX_Designer_1.pdf,Frontend Developer Jd,,0
+32,Mariam Qureshi Backend Developer 5,2.198064662216828,Mariam_Qureshi_Backend_Developer_5.pdf,Frontend Developer Jd,"flask, machine learning, mongodb, aws, docker",7
+33,Kashif Iqbal Data Scientist 7,2.0732062666788122,Kashif_Iqbal_Data_Scientist_7.pdf,Frontend Developer Jd,"python, tensorflow, machine learning, nlp, sql",5
+34,Faisal Hussain Data Scientist 3,2.042684505339883,Faisal_Hussain_Data_Scientist_3.pdf,Frontend Developer Jd,"python, tensorflow, machine learning, nlp, sql",5
+35,Tariq Qureshi Data Scientist 8,1.6667273607787834,Tariq_Qureshi_Data_Scientist_8.pdf,Frontend Developer Jd,"machine learning, deep learning, nlp, sql, go",5
+36,Iqra Chaudhry Data Scientist 1,1.2430679180786672,Iqra_Chaudhry_Data_Scientist_1.pdf,Frontend Developer Jd,"tensorflow, machine learning, deep learning, data science",4
+37,Waqas Malik Data Scientist 4,1.2242931612099184,Waqas_Malik_Data_Scientist_4.pdf,Frontend Developer Jd,"python, tensorflow, nlp, data science, aws",5
+38,Junaid Awan Data Scientist 2,1.17667697574347,Junaid_Awan_Data_Scientist_2.pdf,Frontend Developer Jd,"python, machine learning, deep learning, data science, aws",5
+39,Usman Hussain Data Scientist 5,1.1717319713507566,Usman_Hussain_Data_Scientist_5.pdf,Frontend Developer Jd,"machine learning, deep learning, data science",3
+40,Adeel Malik Data Scientist 6,0.9480581617237003,Adeel_Malik_Data_Scientist_6.pdf,Frontend Developer Jd,"python, tensorflow, machine learning, deep learning, nlp",6

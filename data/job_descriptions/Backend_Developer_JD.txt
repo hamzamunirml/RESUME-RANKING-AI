@@ -1,0 +1,22 @@
+Job Title: Backend Developer
+Location: Remote / Pakistan
+Experience Required: 1-3 years
+
+About the Role:
+We are looking for a talented Backend Developer to join our team. The ideal candidate is
+proficient in MongoDB, Flask, Node.js, Git and has a strong understanding
+of modern development/design practices.
+
+Responsibilities:
+- Design, develop, and maintain high-quality solutions in backend developer domain.
+- Collaborate with cross-functional teams including design, product, and QA.
+- Write clean, maintainable, and well-documented code/designs.
+- Participate in code/design reviews and continuous improvement processes.
+
+Required Skills:
+MongoDB, Flask, Node.js, Git, AWS, PostgreSQL, Python, Django, Docker, SQL, Redis, Express.js, REST API, Microservices
+
+Qualifications:
+- Bachelor's degree in Computer Science, Software Engineering, or related field.
+- Strong problem-solving and communication skills.
+- Prior project or internship experience preferred.

@@ -1,0 +1,41 @@
+
+    ==================== AI RESUME SCREENING REPORT ====================
+
+    Date: 2026-06-30 23:07:22
+
+    SUMMARY STATISTICS:
+    ------------------
+    Total Resumes Analyzed: 40
+    Total Job Descriptions: 5
+
+    TOP CANDIDATES:
+    ---------------
+    
+    Rank 1: Shahid Farooq Backend Developer 7
+        - Similarity Score: 21.57%
+        - Skills: django, flask, sql, postgresql, mongodb
+    
+    Rank 2: Sana Khan Backend Developer 2
+        - Similarity Score: 19.12%
+        - Skills: flask, sql, mongodb, redis, docker
+    
+    Rank 3: Mahnoor Khan Backend Developer 1
+        - Similarity Score: 19.07%
+        - Skills: python, django, flask, sql, redis
+    
+    Rank 4: Junaid Sheikh Backend Developer 6
+        - Similarity Score: 16.99%
+        - Skills: python, django, sql, postgresql, redis
+    
+    Rank 5: Adeel Abbasi Backend Developer 3
+        - Similarity Score: 16.91%
+        - Skills: python, node, django, flask, sql
+    
+
+    RECOMMENDATIONS:
+    ---------------
+    - Top candidate: Shahid Farooq Backend Developer 7 (21.57% match)
+    - Best match among candidates: 21.57%
+    - Average similarity score: 6.45%
+
+    

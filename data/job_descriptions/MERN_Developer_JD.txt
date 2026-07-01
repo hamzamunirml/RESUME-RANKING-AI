@@ -1,0 +1,22 @@
+Job Title: MERN Developer
+Location: Remote / Pakistan
+Experience Required: 1-3 years
+
+About the Role:
+We are looking for a talented MERN Developer to join our team. The ideal candidate is
+proficient in Express.js, JWT Authentication, Socket.io, Git and has a strong understanding
+of modern development/design practices.
+
+Responsibilities:
+- Design, develop, and maintain high-quality solutions in mern developer domain.
+- Collaborate with cross-functional teams including design, product, and QA.
+- Write clean, maintainable, and well-documented code/designs.
+- Participate in code/design reviews and continuous improvement processes.
+
+Required Skills:
+Express.js, JWT Authentication, Socket.io, Git, React.js, Mongoose, JavaScript, HTML, REST API, CSS, Node.js, Tailwind CSS, Redux, MongoDB
+
+Qualifications:
+- Bachelor's degree in Computer Science, Software Engineering, or related field.
+- Strong problem-solving and communication skills.
+- Prior project or internship experience preferred.
