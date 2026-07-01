@@ -1,0 +1,9 @@
+# Test dependencies
+pytest==7.4.0
+pytest-cov==4.1.0
+pytest-mock==3.11.1
+pytest-xdist==3.3.1
+pytest-flask==1.2.0
+coverage==7.2.7
+mock==5.1.0
+faker==18.13.0

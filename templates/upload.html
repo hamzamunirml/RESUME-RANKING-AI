@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}Upload - AI Resume Screening{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="mb-4">
+        <i class="fas fa-upload text-primary me-2"></i>Upload Files
+    </h2>
+
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data" id="uploadForm">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                        <!-- Resume Upload -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-file-pdf text-danger me-2"></i>Upload Resumes (PDF)
+                            </label>
+                            <input type="file" name="resumes" class="form-control" accept=".pdf" multiple required>
+                            <small class="text-muted">Select multiple PDF files</small>
+                        </div>
+
+                        <!-- Job Description Upload -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-file-alt text-primary me-2"></i>Upload Job Descriptions (TXT)
+                            </label>
+                            <input type="file" name="job_descriptions" class="form-control" accept=".txt" multiple
+                                required>
+                            <small class="text-muted">Select multiple TXT files</small>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-rocket me-2"></i>Start Screening
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div id="progressContainer" class="mt-4" style="display: none;">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-spinner fa-spin me-2"></i>Processing...
+                        </h5>
+                        <div class="progress">
+                            <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated"
+                                style="width: 0%">0%</div>
+                        </div>
+                        <p id="statusText" class="mt-2 text-muted">Initializing...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('uploadForm').addEventListener('submit', function (e) {
+        // Show progress bar
+        document.getElementById('progressContainer').style.display = 'block';
+
+        // Simulate progress
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += 10;
+            if (progress <= 100) {
+                document.getElementById('progressBar').style.width = progress + '%';
+                document.getElementById('progressBar').textContent = progress + '%';
+
+                // Update status text
+                const statuses = [
+                    'Initializing...',
+                    'Processing resumes...',
+                    'Extracting text...',
+                    'Cleaning data...',
+                    'Calculating similarity...',
+                    'Ranking candidates...',
+                    'Generating results...',
+                    'Almost done...'
+                ];
+                const index = Math.floor(progress / 15);
+                if (index < statuses.length) {
+                    document.getElementById('statusText').textContent = statuses[index];
+                }
+            }
+        }, 500);
+    });
+</script>
+{% endblock %}

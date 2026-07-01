@@ -49,6 +49,12 @@ class CandidateRanker:
         Returns:
             DataFrame with ranked candidates
         """
+        # ✅ FIX: Handle empty matrix
+        if similarity_matrix.shape[0] == 0 or similarity_matrix.shape[1] == 0:
+            return pd.DataFrame(
+                columns=["Rank", "Candidate", "Similarity_Score", "File"]
+            )
+
         # Get scores for specific JD
         scores = similarity_matrix[:, jd_index]
 
@@ -208,26 +214,3 @@ class CandidateRanker:
         }
 
         return summary
-
-
-# Test function
-def test_ranker():
-    """Test the candidate ranker"""
-    ranker = CandidateRanker()
-
-    # Create sample data
-    similarity_matrix = np.array([[0.85, 0.70], [0.92, 0.65], [0.78, 0.80]])
-
-    names = ["Alice", "Bob", "Charlie"]
-    files = ["alice.pdf", "bob.pdf", "charlie.pdf"]
-
-    # Rank candidates
-    results = ranker.rank_candidates(similarity_matrix, names, files, jd_index=0)
-    print("Ranked Candidates:")
-    print(results)
-    print("\nSummary:")
-    print(ranker.generate_summary())
-
-
-if __name__ == "__main__":
-    test_ranker()

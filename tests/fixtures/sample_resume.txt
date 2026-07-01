@@ -1,0 +1,38 @@
+John Doe
+Senior Software Engineer | john.doe@email.com | (555) 123-4567
+San Francisco, CA | linkedin.com/in/johndoe
+
+PROFESSIONAL SUMMARY
+Experienced Full Stack Developer with 5+ years of experience building web applications.
+Expert in Python, React, and Node.js. Strong background in machine learning and data science.
+
+SKILLS
+Python, React, Node.js, MongoDB, PostgreSQL, AWS, Docker, Kubernetes, Git, REST APIs,
+Machine Learning, Deep Learning, NLP, TensorFlow, PyTorch
+
+EXPERIENCE
+Google | San Francisco, CA
+Senior Full Stack Developer | Jan 2021 - Present
+- Developed scalable web applications using Python and React
+- Implemented RESTful APIs with Node.js and Express
+- Deployed applications on AWS cloud infrastructure
+- Led a team of 5 developers
+
+Microsoft | Seattle, WA
+Full Stack Developer | Jun 2018 - Dec 2020
+- Built responsive web applications using React and TypeScript
+- Created database schemas for PostgreSQL and MongoDB
+- Implemented CI/CD pipelines using Docker and Jenkins
+
+EDUCATION
+M.S. Computer Science | Stanford University | 2020
+B.S. Information Technology | MIT | 2018
+
+PROJECTS
+AI-Powered Chatbot | Python, TensorFlow, React
+E-commerce Platform | React, Node.js, MongoDB
+Real-time Chat App | React Native, Socket.io, Firebase
+
+CERTIFICATIONS
+AWS Certified Developer | 2022
+Google Cloud Professional | 2021

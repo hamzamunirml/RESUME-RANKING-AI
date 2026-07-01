@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Home - AI Resume Screening{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row align-items-center">
+        <div class="col-lg-6">
+            <h1 class="display-4 fw-bold text-primary">
+                <i class="fas fa-robot me-2"></i>AI Resume Screening
+            </h1>
+            <p class="lead mt-3">
+                Automatically analyze resumes and rank candidates based on job description relevance.
+            </p>
+            <ul class="list-unstyled mt-4">
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>AI-Powered Analysis</strong> - Uses NLP and machine learning
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Smart Ranking</strong> - Compare resumes with job descriptions
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Skill Extraction</strong> - Identify key skills automatically
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Visual Insights</strong> - View detailed analytics and charts
+                </li>
+            </ul>
+            <a href="{{ url_for('main.upload') }}" class="btn btn-primary btn-lg mt-3">
+                <i class="fas fa-upload me-2"></i>Get Started
+            </a>
+        </div>
+        <div class="col-lg-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-4">
+                        <i class="fas fa-chart-line text-primary"></i> Quick Stats
+                    </h5>
+                    <div class="row text-center">
+                        <div class="col-6">
+                            <h3 class="text-primary">30+</h3>
+                            <p class="text-muted">Resumes Analyzed</p>
+                        </div>
+                        <div class="col-6">
+                            <h3 class="text-success">5</h3>
+                            <p class="text-muted">Job Descriptions</p>
+                        </div>
+                        <div class="col-6 mt-3">
+                            <h3 class="text-info">92%</h3>
+                            <p class="text-muted">Top Match Score</p>
+                        </div>
+                        <div class="col-6 mt-3">
+                            <h3 class="text-warning">10s</h3>
+                            <p class="text-muted">Processing Time</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row mt-5 g-4">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-file-pdf fa-3x text-danger mb-3"></i>
+                    <h5 class="card-title">PDF Parsing</h5>
+                    <p class="card-text text-muted">Extract text from PDF resumes with high accuracy</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-brain fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">NLP Processing</h5>
+                    <p class="card-text text-muted">Clean, tokenize, and lemmatize text using NLP</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-trophy fa-3x text-warning mb-3"></i>
+                    <h5 class="card-title">Smart Ranking</h5>
+                    <p class="card-text text-muted">Rank candidates based on TF-IDF similarity</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

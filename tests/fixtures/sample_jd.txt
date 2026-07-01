@@ -1,0 +1,33 @@
+Job Title: Senior Full Stack Developer
+
+Job Description:
+We are looking for a Senior Full Stack Developer to join our engineering team.
+The ideal candidate will have strong experience with Python, React, and cloud technologies.
+
+Key Responsibilities:
+- Develop and maintain web applications
+- Design and implement RESTful APIs
+- Create responsive user interfaces
+- Write clean, maintainable code
+- Collaborate with cross-functional teams
+
+Required Skills:
+- Python
+- React
+- Node.js
+- MongoDB or PostgreSQL
+- AWS or Azure
+- Docker
+- Git
+- REST APIs
+- Problem-solving skills
+
+Preferred Qualifications:
+- 5+ years of experience
+- Experience with Machine Learning
+- Knowledge of Kubernetes
+- Understanding of CI/CD
+- Good communication skills
+
+Education:
+- Bachelor's degree in Computer Science or related field
