@@ -162,155 +162,187 @@ def extract_skills(text):
     return found_skills
 
 
-def display_results(resume_texts, jd_texts, resume_names):
-    """Display ranking results"""
+def render_jd_results(results, resume_texts, resume_names, jd_label, key_suffix):
+    """Render metrics, table, charts, top candidate and download button for a single JD's ranking"""
+
+    # Extract skills (independent of which JD this is)
+    skills_list = []
+    for text in resume_texts:
+        skills = extract_skills(text)
+        skills_list.append(", ".join(skills[:5]) if skills else "No skills found")
+
+    results = results.copy()
+    results["Skills"] = skills_list
+
+    # Display metrics
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.metric("📊 Total Candidates", len(results))
+    with col2:
+        st.metric("🏆 Top Score", f"{results.iloc[0]['Similarity_Score']:.1f}%")
+    with col3:
+        st.metric("📈 Average Score", f"{results['Similarity_Score'].mean():.1f}%")
+    with col4:
+        st.metric("📁 Resumes", len(resume_texts))
+
+    # Results table
+    st.subheader("📋 Ranked Candidates")
+
+    display_df = results.copy()
+    display_df["Similarity_Score"] = display_df["Similarity_Score"].round(1)
+
+    # Color coding function
+    def color_score(val):
+        if val >= 80:
+            return "background-color: #28a745; color: white"
+        elif val >= 60:
+            return "background-color: #ffc107; color: black"
+        else:
+            return "background-color: #dc3545; color: white"
+
+    # Apply styling
+    styled_df = display_df.style.applymap(color_score, subset=["Similarity_Score"])
+
+    st.dataframe(styled_df, use_container_width=True, height=400)
+
+    # Visualization
+    st.subheader("📈 Score Visualization")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        # Bar chart
+        fig1, ax1 = plt.subplots(figsize=(8, 5))
+        top_n = min(10, len(display_df))
+        colors = [
+            "#2ecc71" if i < 3 else "#f1c40f" if i < 6 else "#e74c3c"
+            for i in range(top_n)
+        ]
+
+        ax1.barh(
+            display_df["Candidate"][:top_n][::-1],
+            display_df["Similarity_Score"][:top_n][::-1],
+            color=colors[::-1],
+        )
+        ax1.set_xlabel("Similarity Score (%)")
+        ax1.set_title("Top Candidates")
+        ax1.set_xlim(0, 100)
+        plt.tight_layout()
+        st.pyplot(fig1)
+        plt.close(fig1)
+
+    with col2:
+        # Histogram
+        fig2, ax2 = plt.subplots(figsize=(8, 5))
+        ax2.hist(
+            display_df["Similarity_Score"],
+            bins=10,
+            color="skyblue",
+            edgecolor="black",
+            alpha=0.7,
+        )
+        ax2.axvline(
+            display_df["Similarity_Score"].mean(),
+            color="red",
+            linestyle="dashed",
+            linewidth=2,
+            label=f'Mean: {display_df["Similarity_Score"].mean():.1f}%',
+        )
+        ax2.axvline(
+            display_df["Similarity_Score"].median(),
+            color="green",
+            linestyle="dashed",
+            linewidth=2,
+            label=f'Median: {display_df["Similarity_Score"].median():.1f}%',
+        )
+        ax2.set_xlabel("Similarity Score (%)")
+        ax2.set_ylabel("Frequency")
+        ax2.set_title("Score Distribution")
+        ax2.legend()
+        plt.tight_layout()
+        st.pyplot(fig2)
+        plt.close(fig2)
+
+    # Top candidate details
+    st.subheader("🏆 Top Candidate")
+    top = results.iloc[0]
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.info(f"**Candidate:** {top['Candidate']}")
+    with col2:
+        st.success(f"**Score:** {top['Similarity_Score']:.1f}%")
+    with col3:
+        st.info(f"**Skills:** {top.get('Skills', 'N/A')}")
+
+    # Download button
+    csv = display_df.to_csv(index=False)
+    safe_label = "".join(c if c.isalnum() else "_" for c in jd_label)[:40]
+    st.download_button(
+        label=f"📥 Download Results CSV ({jd_label})",
+        data=csv,
+        file_name=f"ranked_candidates_{safe_label}.csv",
+        mime="text/csv",
+        use_container_width=True,
+        key=f"download_{key_suffix}",
+    )
+
+    return results
+
+
+def display_results(resume_texts, jd_texts, resume_names, jd_names=None):
+    """Display ranking results. Supports multiple job descriptions via tabs —
+    each JD gets its own ranking, computed from the same similarity matrix."""
     if not resume_texts or not jd_texts:
         st.warning("⚠️ Please provide both resumes and job descriptions")
         return
 
+    if jd_names is None:
+        jd_names = [f"Job Description {i+1}" for i in range(len(jd_texts))]
+
     try:
         with st.spinner("🔄 Processing and ranking candidates..."):
-            # Preprocess texts
+            # Preprocess texts (done once, regardless of how many JDs)
             cleaned_resumes = [process_resume_text(t) for t in resume_texts]
             cleaned_jds = [process_jd_text(t) for t in jd_texts]
 
-            # Calculate similarity
+            # Calculate similarity matrix: shape (n_resumes, n_jds)
             similarity_matrix = calculator.calculate_similarity_scores(
                 cleaned_resumes, cleaned_jds
             )
 
-            # Rank candidates
-            results = ranker.rank_candidates(
-                similarity_matrix, resume_names, resume_names, jd_index=0
-            )
-
-            # Extract skills
-            skills_list = []
-            for text in resume_texts:
-                skills = extract_skills(text)
-                skills_list.append(
-                    ", ".join(skills[:5]) if skills else "No skills found"
-                )
-
-            results["Skills"] = skills_list
-
-            # Success message
             st.success("✅ Processing complete!")
 
-            # Display metrics
-            col1, col2, col3, col4 = st.columns(4)
-            with col1:
-                st.metric("📊 Total Candidates", len(results))
-            with col2:
-                st.metric("🏆 Top Score", f"{results.iloc[0]['Similarity_Score']:.1f}%")
-            with col3:
-                st.metric(
-                    "📈 Average Score", f"{results['Similarity_Score'].mean():.1f}%"
+            if len(jd_texts) == 1:
+                # Single JD — render directly, no tabs needed
+                results = ranker.rank_candidates(
+                    similarity_matrix, resume_names, resume_names, jd_index=0
                 )
-            with col4:
-                st.metric("📁 Resumes", len(resume_texts))
-
-            # Results table
-            st.subheader("📋 Ranked Candidates")
-
-            display_df = results.copy()
-            display_df["Similarity_Score"] = display_df["Similarity_Score"].round(1)
-
-            # Color coding function
-            def color_score(val):
-                if val >= 80:
-                    return "background-color: #28a745; color: white"
-                elif val >= 60:
-                    return "background-color: #ffc107; color: black"
-                else:
-                    return "background-color: #dc3545; color: white"
-
-            # Apply styling
-            styled_df = display_df.style.applymap(
-                color_score, subset=["Similarity_Score"]
-            )
-
-            st.dataframe(styled_df, use_container_width=True, height=400)
-
-            # Visualization
-            st.subheader("📈 Score Visualization")
-
-            col1, col2 = st.columns(2)
-
-            with col1:
-                # Bar chart
-                fig1, ax1 = plt.subplots(figsize=(8, 5))
-                top_n = min(10, len(display_df))
-                colors = [
-                    "#2ecc71" if i < 3 else "#f1c40f" if i < 6 else "#e74c3c"
-                    for i in range(top_n)
-                ]
-
-                ax1.barh(
-                    display_df["Candidate"][:top_n][::-1],
-                    display_df["Similarity_Score"][:top_n][::-1],
-                    color=colors[::-1],
+                render_jd_results(results, resume_texts, resume_names, jd_names[0], key_suffix="0")
+            else:
+                # Multiple JDs — one tab per job description, each with its own ranking
+                st.info(
+                    f"📋 {len(jd_texts)} job descriptions provided — showing ranked "
+                    f"candidates separately for each. Select a tab below."
                 )
-                ax1.set_xlabel("Similarity Score (%)")
-                ax1.set_title("Top Candidates")
-                ax1.set_xlim(0, 100)
-                plt.tight_layout()
-                st.pyplot(fig1)
+                tabs = st.tabs([f"🎯 {name}" for name in jd_names])
+                for jd_index, tab in enumerate(tabs):
+                    with tab:
+                        results = ranker.rank_candidates(
+                            similarity_matrix,
+                            resume_names,
+                            resume_names,
+                            jd_index=jd_index,
+                        )
+                        render_jd_results(
+                            results,
+                            resume_texts,
+                            resume_names,
+                            jd_names[jd_index],
+                            key_suffix=str(jd_index),
+                        )
 
-            with col2:
-                # Histogram
-                fig2, ax2 = plt.subplots(figsize=(8, 5))
-                ax2.hist(
-                    display_df["Similarity_Score"],
-                    bins=10,
-                    color="skyblue",
-                    edgecolor="black",
-                    alpha=0.7,
-                )
-                ax2.axvline(
-                    display_df["Similarity_Score"].mean(),
-                    color="red",
-                    linestyle="dashed",
-                    linewidth=2,
-                    label=f'Mean: {display_df["Similarity_Score"].mean():.1f}%',
-                )
-                ax2.axvline(
-                    display_df["Similarity_Score"].median(),
-                    color="green",
-                    linestyle="dashed",
-                    linewidth=2,
-                    label=f'Median: {display_df["Similarity_Score"].median():.1f}%',
-                )
-                ax2.set_xlabel("Similarity Score (%)")
-                ax2.set_ylabel("Frequency")
-                ax2.set_title("Score Distribution")
-                ax2.legend()
-                plt.tight_layout()
-                st.pyplot(fig2)
-
-            # Top candidate details
-            st.subheader("🏆 Top Candidate")
-            top = results.iloc[0]
-
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                st.info(f"**Candidate:** {top['Candidate']}")
-            with col2:
-                st.success(f"**Score:** {top['Similarity_Score']:.1f}%")
-            with col3:
-                st.info(f"**Skills:** {top.get('Skills', 'N/A')}")
-
-            # Download button
-            csv = display_df.to_csv(index=False)
-            st.download_button(
-                label="📥 Download Results CSV",
-                data=csv,
-                file_name="ranked_candidates.csv",
-                mime="text/csv",
-                use_container_width=True,
-            )
-
-            return results
+            return similarity_matrix
 
     except Exception as e:
         st.error(f"❌ Error processing: {str(e)}")
@@ -361,15 +393,18 @@ def process_files(resume_files, jd_files):
 
         # Process job descriptions
         jd_texts = []
+        jd_names = []
         for i, file in enumerate(jd_files):
             status_text.text(f"📄 Processing JD {i+1}/{len(jd_files)}: {file.name}")
 
             try:
                 text = file.getvalue().decode("utf-8")
                 jd_texts.append(text)
+                jd_names.append(file.name.replace(".txt", "").replace("_", " ").title())
             except Exception as e:
                 st.warning(f"Could not read {file.name}: {str(e)}")
                 jd_texts.append("")
+                jd_names.append(file.name)
 
             progress_bar.progress(
                 (len(resume_files) + i + 1) / (len(resume_files) + len(jd_files))
@@ -378,8 +413,8 @@ def process_files(resume_files, jd_files):
         status_text.text("✅ Processing complete!")
         progress_bar.progress(1.0)
 
-        # Display results
-        display_results(resume_texts, jd_texts, resume_names)
+        # Display results (one tab per JD if more than one was uploaded)
+        display_results(resume_texts, jd_texts, resume_names, jd_names)
 
     except Exception as e:
         st.error(f"❌ Error processing files: {str(e)}")
@@ -401,7 +436,8 @@ def process_sample_data(resumes, jds):
         return
 
     resume_names = [f"Sample {i+1}" for i in range(len(resumes))]
-    display_results(resumes, jds, resume_names)
+    jd_names = [jd.strip().split("\n")[0] for jd in jds]
+    display_results(resumes, jds, resume_names, jd_names)
 
 
 def load_sample_data():
