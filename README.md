@@ -1,5 +1,9 @@
 # 🤖 AI Resume Screening & Candidate Ranking System
 
+<img width="1600" height="1171" alt="image" src="https://github.com/user-attachments/assets/f034719c-402a-4165-80f6-d4a4b54131f9" />
+
+
+
 An NLP/ML-powered system that automatically screens resumes against job
 descriptions and ranks candidates by relevance — built with Streamlit,
 scikit-learn, and NLTK.
