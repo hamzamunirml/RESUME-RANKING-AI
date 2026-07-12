@@ -30,7 +30,7 @@ scikit-learn, and NLTK.
 
 ## 🖥️ Live Demo
 
-👉 [Add your Streamlit Cloud URL here]
+👉 https://resume-ranking-ai-2njmwtfr9wzr82sjnrn8zj.streamlit.app/
 
 ---
 
